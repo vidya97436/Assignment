@@ -1,4 +1,12 @@
-
+- task: TerraformCLI@2
+  inputs:
+    command: 'plan'
+    environmentServiceName: 'azure-service-connection'
+    allowTelemetryCollection: true
+- task: TerraformCLI@2
+  inputs:
+    command: 'plan'
+    allowTelemetryCollection: true
 trigger:
 - master
 
