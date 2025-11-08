@@ -20,6 +20,11 @@ steps:
     backendServiceArm: 'azure-service-connection'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'backend-rg'
+- task: TerraformCLI@2
+  inputs:
+    command: 'apply'
+    environmentServiceName: 'azure-service-connection'
+    allowTelemetryCollection: true
     backendAzureRmResourceGroupLocation: 'eastus'
     backendAzureRmStorageAccountName: 'storageacctnamexm1'
     backendAzureRmContainerName: 'storageaccntcon'
@@ -30,8 +35,3 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure'
     environmentServiceName: 'azure-service-connection'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
-- task: TerraformCLI@2
-  inputs:
-    command: 'plan'
-    environmentServiceName: 'New-connection'
-    allowTelemetryCollection: true
